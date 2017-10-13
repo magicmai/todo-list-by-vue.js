@@ -1,0 +1,165 @@
+* {
+	background: rgba(0, 0, 0, .0);
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+	position: relative;
+}
+
+input, button, textarea {
+	border: 1px solid rgba(0, 0, 0, .1);
+	margin-right: 3px;
+	padding: 5px 3px;
+}
+
+button {
+	border: none;
+	color: #999;
+}
+
+button:focus {
+	outline: none;
+}
+
+input, textarea {
+	width: 100%;
+	display: block;	
+}
+
+textarea {
+	height: 100px;
+	border: 1px solid rgba(255, 255, 255, 0);
+}
+
+#main {
+	margin-bottom: 100px;
+}
+
+.wrap {
+	max-width: 500px;
+	margin: 0 auto 20px;
+}
+
+.navbar, .header {
+	text-align: center;
+}
+
+.navbar {
+	background: #db4c3f;
+	color: #f7f3ea;
+}
+
+.navbar h1 {
+	font-size: 24px;
+	margin: 0;
+	padding: 10px 0;
+}
+
+.header {
+	padding: 20px 0;
+	color: #999;
+	font-size: 18px;
+}
+
+#task-input {
+	background: #eee;
+	border: 2px solid rgba(255, 255, 255, 0);
+}
+
+#task-input:focus {
+	background: #fff;
+	border: 2px solid #db4c3f;
+	outline: #fff;
+}
+
+.detail {
+	border: 1px solid #ddd;
+	display: none;
+}
+
+.detail p {
+	font-size: 14px;
+	margin: 8px;
+}
+
+textarea, .alert-time {
+	background: #eee;
+}
+
+.alert-time, .refresh {
+    margin: 0 auto;
+    width: 98%;
+    border-radius: 3px;
+}
+
+.item {
+	border-top: 1px solid #eee;
+	border-right: 1px solid #eee;
+	border-left: 1px solid #eee;
+	padding: 2px 5px;
+	line-height: 40px;
+	border-radius: 3px;
+}
+
+.item:last-child {	
+	border-bottom: 1px solid #eee;
+}
+
+.item:hover {
+	background: #fff2f2;
+}
+
+.complete:hover {
+	background: #eee;
+	
+
+}
+
+.complete {
+	color: #999;
+	text-decoration: line-through;
+}
+
+.add, #toggle-detail {
+	float: right;
+	color: #999;
+	top: -30px;
+	right: 0px;
+}
+
+.refresh {
+	display: block;
+	margin: 5px auto;
+	background: #db4c3f;
+	color: #fff;
+}
+
+.finish {
+	color: #999;
+}
+
+#alert-sound {
+	display: none;
+}
+
+.finish-btn, .undo-btn {	
+	font-size: 1.5em;
+	color: #aaa;
+	top: 3px;
+}
+
+.undo-btn:hover,
+.refresh-btn:hover,
+.del-btn:hover,
+.add:hover, 
+#toggle-detail:hover {
+	color: #f51400;
+}
+
+.refresh-btn, .del-btn {
+	float: right;
+	top: 8px;
+	color: #999;
+}
+
+.refresh-btn:hover

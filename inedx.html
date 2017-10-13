@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue TODO-LIST(组件化)</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<link rel="stylesheet" href="lib/normalize.css">
+	<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	<div id="main">
+		<div class="navbar">
+			<h1>搞事情</h1>
+		</div>
+		<div class="header">
+			My TODO-LIST
+		</div>
+
+		<form @submit.prevent="merge" id="task-form">
+			<div class="wrap">
+				<input v-model="current.title" type="text" id="task-input" autocomplete="off" placeholder="请输入任务...">
+				<button id="toggle-detail" @click="toggle_detail()"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></button>
+				<button type="submit" class="add"><i class="fa fa-plus" aria-hidden="true"></i></button>
+
+				<div class="detail" id="detail">
+					<textarea v-model="current.desc" placeholder="任务详情..."></textarea>
+					<p>定时提醒</p>
+					<input v-model="current.alert_at" type="datetime-local" class="alert-time">
+					<button type="submit" class="refresh">确定</button>
+				</div>
+					
+			</div>
+		</form>
+
+		<div class="task-list">
+			<div class="wrap">
+				<p class="finish">待办事项</p>
+				<task :todo="todo" 
+					  v-if="!todo.completed" 
+					  v-for="(todo, index) in list"
+					  key="index">
+				</task>	
+			</div>
+		</div>
+
+		<div class="task-list">
+			<div class="wrap">
+				<p class="finish">已完成</p>
+				<div v-if="todo.completed" v-for="(todo, index) in list" class="item complete">
+					<button @click="toggle_complete(todo.id)" class="finish-btn"> <i class="fa fa-check-circle" aria-hidden="true"></i></button>
+					{{todo.title}}
+					<button @click="remove(todo.id)" class="del-btn"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	
+	<audio id="alert-sound">
+		<source src="./sound/alert.wav">
+	</audio>
+	<template id="task-tpl">
+		<div class="item">
+			<button @click="action('toggle_complete', todo.id)" class="undo-btn"><i class="fa fa-check-circle-o" aria-hidden="true"></i></button>
+			{{todo.title}}
+			<button @click="action('remove', todo.id)" class="del-btn"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+			<button @click="action('set_current', todo)" class="refresh-btn"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+		</div>
+	</template>
+	<script src="lib/vue.js"></script>
+	<script src="js/myStorage.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>
