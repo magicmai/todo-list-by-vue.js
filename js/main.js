@@ -28,10 +28,12 @@
 
 		mounted: function () {
 			var me = this;
-			console.log('me', me);
+			// console.log('me: ', me);
 			this.list = ms.get('list') || this.list;
+			// console.log('this.list: ', this.list);
 
 			this.check_alerts();
+
 			setInterval(function () {
 				// console.log('this: ', this);  // Window
 				me.check_alerts();
@@ -70,7 +72,7 @@
 					var now = (new Date()).getTime();  // 换成时间戳好计算
 
 					if (now >= alert_at) {
-						alert_sound.play();  // 为什么点击了确定后才发声?????
+						alert_sound.play();  // 为什么点击确定后才发声?
 						var confirmed = confirm(row.title);
 						Vue.set(me.list[i], 'alert_comfirmed', confirmed);
 					}
@@ -82,7 +84,6 @@
 				var is_update, id;
 				is_update = id = this.current.id;				
 				if (is_update) {
-					console.log('this.current: ', this.current);
 					var index = this.find_index(is_update);
 					Vue.set(this.list, index, copy(this.current));
 
@@ -92,16 +93,11 @@
 					if (!title && title !== 0) {       // title 为空不为 0
 						return;
 					}
-					var todo = copy(this.current);     // {tiitle: '...', id: 1}
-					todo.id = this.next_id();          // this.list.length + 1
+					var todo = copy(this.current);     // {tiitle: '...'}
+					todo.id = this.next_id();          // {tiitle: '...', id:..}
 					this.list.push(todo);              // [{}, ...]
-
-					console.log('this.current: ', this.current);
-					// console.log('todo: ', todo);
-					// console.log('todo.id: ', todo.id);
-					// console.log('this.list: ', this.list);				
 				}
-				this.reset_current();  // 清空输入框数据
+				this.reset_current();                  // 清空输入框数据
 			},
 			
 			/************** 删除新项 **************/
@@ -111,11 +107,12 @@
 			},
 
 			next_id: function () {
-				console.log('this.list: ', this.list);
 				if (!this.list.length) {
 					return this.list.length + 1;
 				} else {
-					return this.list[this.list.length-1].id + 1;  // 给每一项添加一个固定的 id，便于更新操作，但是删除了其中一项，再在 this.list.length 的基础上加一，会与别的项重复 id ?????????????????????
+					// 给每一项添加一个固定的 id，便于更新操作
+					// 若删除了其中一项，在最后一项的id的基础上+1，使之不重复
+					return this.list[this.list.length - 1].id + 1;  
 				}
 			},
 
@@ -142,10 +139,10 @@
 			toggle_detail: function () {
 				var detail = document.getElementById('detail');
 				var display = detail.style.display;
-				if (display === 'none') {
-					detail.style.display = "block";	
-				} else {
+				if (display === 'block') {
 					detail.style.display = "none";
+				} else {
+					detail.style.display = "block";
 				}
 			}
 		},

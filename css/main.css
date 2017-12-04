@@ -111,8 +111,6 @@ textarea, .alert-time {
 
 .complete:hover {
 	background: #eee;
-	
-
 }
 
 .complete {
@@ -161,5 +159,3 @@ textarea, .alert-time {
 	top: 8px;
 	color: #999;
 }
-
-.refresh-btn:hover

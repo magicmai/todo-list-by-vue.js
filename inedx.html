@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Vue TODO-LIST(组件化)</title>
+	<title>My ToDo List</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<link rel="stylesheet" href="lib/normalize.css">
@@ -12,10 +12,10 @@
 <body>
 	<div id="main">
 		<div class="navbar">
-			<h1>搞事情</h1>
+			<h1>Welcome</h1>
 		</div>
 		<div class="header">
-			My TODO-LIST
+			My ToDo List
 		</div>
 
 		<form @submit.prevent="merge" id="task-form">
@@ -61,6 +61,7 @@
 	<audio id="alert-sound">
 		<source src="./sound/alert.wav">
 	</audio>
+
 	<template id="task-tpl">
 		<div class="item">
 			<button @click="action('toggle_complete', todo.id)" class="undo-btn"><i class="fa fa-check-circle-o" aria-hidden="true"></i></button>
@@ -69,6 +70,7 @@
 			<button @click="action('set_current', todo)" class="refresh-btn"><i class="fa fa-pencil" aria-hidden="true"></i></button>
 		</div>
 	</template>
+	
 	<script src="lib/vue.js"></script>
 	<script src="js/myStorage.js"></script>
 	<script src="js/main.js"></script>
