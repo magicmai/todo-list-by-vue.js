@@ -1,4 +1,4 @@
-# 使用 Vue.js 实现 ToDo List
+# 使用 Vue 实现 ToDo List
 
 实现功能：
 1. 添加新任务
